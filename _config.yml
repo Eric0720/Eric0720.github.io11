@@ -1,9 +1,9 @@
 # Basic
 title: Jevad
-subtitle: Welcome to Jevad's blog
+subtitle: stay hungry stay foolish.
 #welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
 welcome_message: <a href="https://github.com/" target="_blank">Download the theme</a>
-description: Vno Jekyll is a port of my Ghost theme vno.
+description: Welcome to Jevad's blog.
 creator: <a href="http://onev.cat">@onevcat</a>
 
 url: "http://vno.onevcat.com"
@@ -14,7 +14,7 @@ permalink: /:year/:month/:title/
 highlighter: rouge
 
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: red
+cover_color: blue
 
 # The blog button should not be removed.
 blog_button:
@@ -26,6 +26,9 @@ nav:
     #- {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
     #- {title: Projects, description: My Projects, url: 'http://www.liujianwei.site'}
      - {title: Project, description: A button, url: 'http://example.com'}
+#CSDN
+nav:
+     - {title: CSDN, description: A button, url: 'http://example.com'}
 
 # Pagination
 gems: [jekyll-paginate]
