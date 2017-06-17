@@ -25,7 +25,7 @@ blog_button:
 nav:
     #- {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
     #- {title: Projects, description: My Projects, url: 'http://www.liujianwei.site'}
-     - {title: Another Button, description: A button, url: 'http://example.com'}
+     - {title: Project, description: A button, url: 'http://example.com'}
 
 # Pagination
 gems: [jekyll-paginate]
