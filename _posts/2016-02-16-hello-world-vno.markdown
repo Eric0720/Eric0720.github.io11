@@ -1,45 +1,59 @@
----
-layout: post
-title: Hello World - Vno
-date: 2016-02-16 15:32:24.000000000 +09:00
----
+####k 均值聚类算法 
 
-#### What's this
+<a>它是做什么的呢？K-聚类算法从一个目标集中创建多个组，每个组的成员都是比较相似的。这是个想要探索一个数据集时比较流行的聚类分析技术。
 
-[Vno Jekyll](https://github.com/onevcat/vno-jekyll) is a theme for [Jekyll](http://jekyllrb.com). It is a port of my Ghost theme [vno](https://github.com/onevcat/vno), which is originally developed from [Dale Anthony's Uno](https://github.com/daleanthony/uno).
+等下，什么是聚类分析呢？聚类分析属于设计构建组群的算法，这里的组成员相对于非组成员有更多的相似性。在聚类分析的世界里，类和组是相同的意思。
 
-#### Usage
+举个例子，假设我们定义一个病人的数据集。在聚类分析里，这些病人可以叫做观察对象。我们知道每个病人的各类信息，比如年龄、血压、血型、最大含氧量和胆固醇含量等。这是一个表达病人特性的向量。
 
-```bash
-$ git clone https://github.com/onevcat/vno-jekyll.git your_site
-$ cd your_site
-$ bundler install
-$ bundler exec jekyll serve
-```
+请看：
 
-Your site with `Vno Jekyll` enabled should be accessible in http://127.0.0.1:4000.
+你可以基本认为一个向量代表了我们所知道的病人情况的一列数据。这列数据也可以理解为多维空间的坐标。脉搏是一维坐标，血型是其他维度的坐标等等。
 
-For more information about Jekyll, please visit [Jekyll's site](http://jekyllrb.com).
+你可能会有疑问：
 
-#### Configuration
+给定这个向量集合，我们怎么把具有相似年龄、脉搏和血压等数据的病人聚类呢？
 
-All configuration could be done in `_config.yml`. Remember you need to restart to serve the page when after changing the config file. Everything in the config file should be self-explanatory.
+想知道最棒的部分是什么吗？
 
-#### Background image and avatar
+你告诉 k-means 算法你想要多少种类。K-means 算法会处理后面的部分。
 
-You could replace the background and avatar image in `assets/images` folder to change them.
+那它是怎么处理的呢？k-means 算法有很多优化特定数据类型的变量</a>
+Kmeans算法更深层次的这样处理问题：
 
-#### Sites using Vno
+>1.k-means 算法在多维空间中挑选一些点代表每一个 k 类。他们叫做中心点。
+>2.每个病人会在这 k 个中心点中找到离自己最近的一个。我们希望病人最靠近的点不要是同一个中心点，所以他们在靠近他们最近的中心点周围形成一个类。
+>3.我们现在有 k 个类，并且现在每个病人都是一个类中的一员。
+>4.之后k-means 算法根据它的类成员找到每个 k 聚类的中心（没错，用的就是病人信息向量）
+>5.这个中心成为类新的中心点。
+>6.因为现在中心点在不同的位置上了，病人可能现在靠近了其他的中心点。换句话说，他们可能会修改自己的类成员身份。
+>7.重复2-6步直到中心点不再改变，这样类成员也就稳定了。这也叫做收敛性。
+>7.这算法是监督的还是非监督的呢？这要看情况了，但是大多数情况下 k-means 会被划分为非监督学习的类型。并不是指定分类的个数，也没有观察对象该属于那个类的任何信息，k-means算法自己“学习”如何聚类。k-means 可以是半监督的。
 
-[My blog](http://onevcat.com) is using `Vno Jekyll` as well, you could see how it works in real. There are some other sites using the same theme. You can find them below:
+为什么要使用 k-means 算法呢？我认为大多数人都同意这一点：
 
-| Site Name    | URL                                                |
-| ------------ | ---------------------------------------------------|
-| OneV's Den   | [http://onevcat.com](http://onevcat.com)           |
-| July Tang    | [http://blog.julytang.xyz](http://onevcat.com)     |
+k-means 关键卖点是它的简单。它的简易型意味着它通常要比其他的算法更快更有效，尤其是要大量数据集的情况下更是如此。
 
-> If you happen to be using this theme, welcome to [send me a pull request](https://github.com/onevcat/vno-jekyll/pulls) to add your site link here. :)
+他可以这样改进：
 
-#### License
+k-means 可以对已经大量数据集进行预先聚类处理，然后在针对每个子类做成本更高点的聚类分析。k-means 也能用来快速的处理“K”和探索数据集中是否有被忽视的模式或关系。
 
-Great thanks to [Dale Anthony](https://github.com/daleanthony) and his [Uno](https://github.com/daleanthony/uno). Vno Jekyll is based on Uno, and contains a lot of modification on page layout, animation, font and some more things I can not remember. Vno Jekyll is followed with Uno and be licensed as [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/). See the link for more information.
+但用k-means 算法也不是一帆风顺的：
+
+k means算法的两个关键弱点分别是它对异常值的敏感性和它对初始中心点选择的敏感性。最后一个需要记住的是， K-means 算法是设计来处理连续数据的。对于离散数据你需要使用一些小技巧后才能让 K-means 算法奏效。
+
+Kmeans 在哪里使用过呢？ 网上有很多可获得的 kmeans 聚类算法的语言实现：
+
+▪ Apache Mahout
+
+▪ Julia
+
+▪ R
+
+▪ SciPy
+
+▪ Weka
+
+▪ MATLAB
+
+▪ SAS
